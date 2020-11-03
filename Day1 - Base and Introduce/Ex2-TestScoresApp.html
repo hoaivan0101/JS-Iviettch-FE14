@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Scores App</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var entry;
+    var average;
+    var total = 0;
+
+    entry = prompt('Enter test score');
+    entry = parseInt(entry);
+    var score1 = entry;
+    total += entry;
+
+    entry = prompt('Enter test score');
+    entry = parseInt(entry);
+    var score2 = entry;
+    total += entry;
+
+    entry = prompt('Enter test score');
+    entry = parseInt(entry);
+    var score3 = entry;
+    total += entry;
+
+    average = parseInt(total / 3);
+    document.write('<h1>Test Score App</h1>');
+    document.write(score1, '+', score2, '+', score3, ' --> ', average);
+
+</script>
+
+</html>
