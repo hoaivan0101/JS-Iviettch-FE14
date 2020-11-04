@@ -4,36 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Test Scores App</title>
 </head>
+<style>
+    span {
+        display: inline-block;
+        min-width: 100px;
+    }
+</style>
 
 <body>
+    <h1>TEST SCORES APP</h1>
+    <form>
+        <span>Math</span>
+        <input type="text" placeholder="Math Scores" id="math">
+        <br>
+        <span>Geography</span>
+        <input type="text" placeholder="Geor Scores" id="geo">
+        <br>
+        <span>Physics</span>
+        <input type="text" placeholder="Physic Scores" id="physic">
+        <br>
+        <span>Gender</span>
+        <input type="text" placeholder="Gender" id="gender">
+    </form>
+    <button class="btn">Confirm</button>
+    <div class="result">
 
+    </div>
+    <div class="gender">
+
+    </div>
 </body>
 <script>
-    var entry;
-    var average;
-    var total = 0;
+    $(document).ready(function () {
+        $('.btn').click(function () {
+            let average = 0;
+            $('.result').html('')
+            $('.gender').html('')
+            let math = parseInt($('#math').val());
+            let geo = parseInt($('#geo').val());
+            let phy = parseInt($('#physic').val());
+            let gender = $('#gender').val();
+            average = parseInt((math + geo + phy) / 3);
+            let result = 'Failed';
+            average < 50 ? result = 'You Failed' : average < 65 ?
+                result = 'Passed but need try more' : average < 80 ? result = 'Passed' : result = 'Excellent'
 
-    entry = prompt('Enter test score');
-    entry = parseInt(entry);
-    var score1 = entry;
-    total += entry;
+            // GENDER
+            switch (gender.toLowerCase().trim()) {
+                case 'man': genResult = 'Nam'; break;
+                case 'woman': genResult = 'Nữ'; break;
+                case 'gay': genResult = 'Buê Đuê'; break;
+                case 'les': genResult = 'Cũng là Buê Đuê'; break;
+                case '2gen': genResult = 'Lưỡng Tính'; break;
+                case 'asexuality': genResult = 'Vô tính'; break;
+                default: genResult = 'Alien'
+            }
 
-    entry = prompt('Enter test score');
-    entry = parseInt(entry);
-    var score2 = entry;
-    total += entry;
-
-    entry = prompt('Enter test score');
-    entry = parseInt(entry);
-    var score3 = entry;
-    total += entry;
-
-    average = parseInt(total / 3);
-    document.write('<h1>Test Score App</h1>');
-    document.write(score1, '+', score2, '+', score3, ' --> ', average);
-
+            $('.result').append(`<h3>Your average point is: ${average}</h3>`);
+            $('.result').append(`<h2>Result: ${result}</h2>`);
+            $('.gender').append(`<h2>Gender: ${genResult}</h2>`);
+        })
+    })
 </script>
 
 </html>
