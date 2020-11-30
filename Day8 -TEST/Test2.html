@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test-2</title>
+</head>
+
+<body>
+    <h1>RANKING</h1>
+    <h2>INPUT YOUR POINTS</h2>
+    <form action="">
+        <input type="text" placeholder="Math score" id="math">
+        <input type="text" placeholder="Physics score" id="physic">
+        <input type="text" placeholder="Chemical score" id="chemical">
+    </form>
+    <button>Confirm</button>
+</body>
+<script src="./jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('button').click(function () {
+            let math = parseFloat($('#math').val());
+            let physic = parseFloat($('#physic').val());
+            let chem = parseFloat($('#chemical').val());
+            let avg = ((math + physic + chem) / 3).toFixed(1);
+            let rank = avg < 5 ? 'D' : avg < 6.5 ? 'C' : avg < 8 ? 'B' : 'A';
+            console.log(avg);
+            console.log(rank);
+        })
+    })
+</script>
+
+</html>

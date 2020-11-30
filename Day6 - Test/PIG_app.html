@@ -74,6 +74,7 @@
     <script>
         // created  function
         $(document).ready(function () {
+            newgame();
             var getRandomNumber = function (max) {
                 var random;
                 if (!isNaN(max)) {
@@ -83,6 +84,7 @@
                 }
                 return random;
             };
+
             var changePlayers = function () {
                 if ($('#current').text() === $("#player1").val()) {
                     $("#current").text($("#player2").val());
@@ -94,19 +96,34 @@
                 $("#roll").focus();
             };
 
-            $("#new_game").click(function () {
+            function newgame() {
                 $("#score1").val("0");
                 $("#score2").val("0");
 
-                if ($("#player1").val() === "" || $("#player1").val() === "") {
+                if ($("#player1").val() === "" || $("#player2").val() === "") {
                     $("#turn").removeClass("open");
                     alert("Please enter your player name");
                 } else {
                     $("#turn").addClass("open");
                     changePlayers();
                 }
-            })
+            }
+
+            $("#new_game").click(newgame);
+
             $("#roll").click(function () {
+
+                if ($("#player1").val() === "" || $("#player2").val() === "") {
+                    $("#turn").removeClass("open");
+                    alert("Please enter your player name");
+                    return false;
+                }
+
+                if ($("#player1").val() === $("#player2").val()) {
+                    alert("difference");
+                    return false;
+                }
+
                 var total = parseInt($("#total").val());
                 var die = getRandomNumber(6);
                 if (die === 1) {
@@ -117,6 +134,7 @@
                 $("#die").val(die);
                 $("#total").val(total);
             });
+
             $("#hold").click(function () {
                 var score;
                 var total = parseInt($("#total").val());

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div class="Test7">
+        <div class="jumbotron text-center">
+            <h1>TEST 7 - STUDENTS MANAGEMENT</h1>
+            <h2>INPUT</h2>
+            <form action="">
+                <input type="text" placeholder="studentCode" id="studentCode">
+                <div class="rq71"></div>
+                <input type="text" placeholder="studentName" id="studentName">
+                <div class="rq72"></div>
+                <input type="text" placeholder="studentAge" id="studentAge">
+                <div class="rq73"></div>
+                <input type="text" placeholder="studentSex" id="studentSex">
+                <div class="rq74"></div>
+            </form>
+            <button class="btn btn-primary" id='btn7'>Confirm</button>
+            <div class="7-1"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    $('#btn7').click(function () {
+        let Ex7Arr = []
+        $('.7-1').html('');
+        $('.rq71').html('');
+        $('.rq72').html('');
+        $('.rq73').html('');
+        $('.rq74').html('');
+
+
+        let code = $('#studentCode').val();
+        let name = $('#studentName').val();
+        let age = $('#studentAge').val();
+        let gender = $('#studentSex').val();
+
+        isValid('studentCode', 'rq71')
+        isValid('studentName', 'rq72')
+        isValid('studentAge', 'rq73')
+        isValid('studentSex', 'rq74')
+
+        Ex7Arr.push({
+            studentCode: code,
+            studentName: name,
+            studentAge: age,
+            studentSex: gender
+        })
+
+        $('#studentCode').val('');
+        $('#studentName').val('');
+        $('#studentAge').val('');
+        $('#studentSex').val('');
+
+        function isValid(name, rq) {
+            if ($(`#` + name).val() == '') { $('.' + rq).append(` <h4> This field is required</h4 > `) };
+        }
+
+        $(document).keyup(function (e) {
+            if (e.keyCode === 27) {
+                for (let i = 0; i < Ex7Arr.length; i++) {
+                    $('.7-1').append(`
+                    <h3>Student:</h3>
+                    <h4>studentCode: ${Ex7Arr[i].studentCode}</h4>
+                    <h4>StudentName: ${Ex7Arr[i].studentName}</h4>
+                    <h4>studentAge: ${Ex7Arr[i].studentAge}</h4>
+                    <h4>studentSex: ${Ex7Arr[i].studentSex}</h4>`);
+                }
+            }
+
+        });
+    })
+
+
+</script>

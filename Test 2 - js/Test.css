@@ -1,0 +1,21 @@
+.test1{
+    min-height: 200px;
+    width: 500px;
+    box-shadow: 0 10px 10px 0 hsla(0, 0%, 64.3%, 0.5);
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.548);
+}
+
+ol li{
+    text-align:left;
+    margin: 15px 0;
+}
+
+ol li:hover{
+    cursor: pointer;
+    text-shadow: 0 10px 10px 0 hsla(0, 0%, 64.3%, 0.5);
+}
+
+ol li:active{
+    color: red;
+}
